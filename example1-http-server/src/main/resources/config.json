@@ -1,0 +1,4 @@
+{
+	"vertx.host": "0.0.0.0",
+	"vertx.port": 7777
+}
