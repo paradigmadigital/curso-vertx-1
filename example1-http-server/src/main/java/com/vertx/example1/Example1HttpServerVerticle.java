@@ -2,6 +2,8 @@ package com.vertx.example1;
 
 
 
+import java.util.UUID;
+
 import org.apache.commons.lang3.StringUtils;
 
 import io.vertx.codegen.annotations.Nullable;
@@ -36,16 +38,21 @@ public class Example1HttpServerVerticle extends AbstractVerticle {
 		int port = config().getInteger("vertx.port", 7777);
 
 		/* Cualquier petición hacemos que que responda esto */
-		router.get("/*").handler(context -> {
-			LOGGER.info("Executing mapping /*");
+		router.get("/test/*").handler(context -> {
+			LOGGER.info("Executing mapping /test/*");
 			context.next();
 		});
 
-		router.get("/test/*").handler(context -> {
-			LOGGER.info("Executing mapping /test/*");
+		router.get("/test/test1").handler(context -> {
+			LOGGER.info("Executing mapping /test/test1");
 			String payload = new JsonObject().put("hello", "Hello world !!!").encode();
 			context.response().putHeader("content-type", "application/json").end(payload);
-			return;
+		});
+
+		router.get("/ping").handler(context -> {
+			LOGGER.info("Executing mapping /ping");
+			String payload = new JsonObject().put("uuid", UUID.randomUUID().toString()).encode();
+			context.response().putHeader("content-type", "application/json").end(payload);
 		});
 
 		/* Endpoin de incrementar en uno un valor en el bus */

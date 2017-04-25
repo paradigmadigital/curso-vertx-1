@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error" packages="biz.paluch.logging.gelf.log4j2">
+    <Appenders>
+
+        <Console name="console" target="SYSTEM_OUT">
+ 	       <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+ 
+		<RollingFile name="defaultLog" fileName="logs/myexample1.log" 
+				filePattern="logs/myexample-%d{yyyy-MM-dd}-%i.log" >
+			<PatternLayout>
+				<pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+			</PatternLayout>
+			<Policies></Policies>
+		</RollingFile>
+
+        <Async name="defaultLog_async">
+            <AppenderRef ref="defaultLog"/>
+        </Async>
+
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="defaultLog_async"/>
+        </Root>
+    </Loggers>
+</Configuration>

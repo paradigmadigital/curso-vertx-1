@@ -10,6 +10,7 @@
 
 	<modules>
 		<module>example1-http-server</module>
+		<module>example2-template-client</module>
 	</modules>
 
 	<properties>

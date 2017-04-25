@@ -1,4 +1,4 @@
-package com.vertx.example1;
+package com.vertx.example2;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
@@ -12,15 +12,15 @@ import io.vertx.core.logging.LoggerFactory;
  * @author manuel
  *
  */
-public class Example1MainVerticle extends AbstractVerticle {
+public class Example2MainVerticle extends AbstractVerticle {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Example1MainVerticle.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Example2MainVerticle.class);
 
 	@Override
 	public void start(Future<Void> future) throws Exception {
 
 		/* Http server verticle */
-		String verticleName = Example1HttpServerVerticle.class.getName();
+		String verticleName = Example2HttpServerVerticle.class.getName();
 		
 		/* Opciones del servidor http */
 		DeploymentOptions options = new DeploymentOptions();
