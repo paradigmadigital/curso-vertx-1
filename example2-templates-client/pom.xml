@@ -27,13 +27,6 @@
 			<artifactId>vertx-web-templ-freemarker</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>io.vertx</groupId>
-			<artifactId>vertx-web</artifactId>
-			<version>3.4.1</version>
-			<classifier>client</classifier>
-			<type>js</type>
-		</dependency>
 	</dependencies>
 
 	<build>
