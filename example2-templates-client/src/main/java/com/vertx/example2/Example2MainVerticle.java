@@ -25,15 +25,15 @@ public class Example2MainVerticle extends AbstractVerticle {
 		/* Opciones del servidor http */
 		DeploymentOptions options = new DeploymentOptions();
 		/* Asignamos como instancias el numero de procesadores por 2 (Patrón multireactor) */
+		options.setConfig(config());
 		options.setInstances(Runtime.getRuntime().availableProcessors() * 2);
 		vertx.deployVerticle(verticleName, options, ar -> {
 			if (ar.succeeded()) {
-				future.complete();
 				LOGGER.info(String.format("Deployment verticle %s ok ", verticleName));
+				future.complete();
 			} else {
-				future.fail(ar.cause());
 				LOGGER.info(String.format("Deployment verticle %s ko ", verticleName));
-
+				future.fail(ar.cause());
 			}
 		});
 	}

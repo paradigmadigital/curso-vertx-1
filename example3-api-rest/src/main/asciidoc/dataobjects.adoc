@@ -1,0 +1,22 @@
+= Cheatsheets
+
+[[SensorDTO]]
+== SensorDTO
+
+++++
+ Datos básicos del sensor.
+ 
+ Observar la anotación la cual nos permitirá generar utilidades para la conversión a JsonObject y viceversa
+++++
+'''
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[description]]`description`|`String`|-
+|[[id]]`id`|`String`|-
+|[[measure]]`measure`|`Number (Double)`|-
+|[[type]]`type`|`String`|-
+|===
+

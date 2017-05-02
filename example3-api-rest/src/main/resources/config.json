@@ -1,0 +1,10 @@
+{
+	"vertx.host": "0.0.0.0",
+	"vertx.port": 7777,
+	"heartbeat.path": "/ping",
+	"mongo": {
+		"host": "127.0.0.1",
+		"port": 27017,
+		"db_name": "sensors"
+	}
+}
