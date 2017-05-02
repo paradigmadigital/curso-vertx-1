@@ -25,7 +25,6 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Example3MainVerticle.class);
 	
-	private static final String SERVICE_NAME = "sensor-rest-api";
 	private static final String API_PATH = "sensors";
 
 	/** Declaración de los mappings */
@@ -46,6 +45,10 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 		super.start();
 		service = Example3MainVerticle.SENSOR_SERVICE;
 		Router router = Router.router(vertx);
+		
+		/* Habilitamos el CORS */
+		enableCorsSupport(router);
+		
 		/* Nos permitirá parsear el body handler para obtener el payload */
 		router.route().handler(BodyHandler.create());
 
