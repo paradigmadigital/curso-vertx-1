@@ -34,7 +34,7 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 		/* INICIO DESCOMENTAR PARA HACER USO DEL BUS EN LAS OPERACIONES CON LA GENERACIÓN DE VERT.X */
 		/* Registramos el servicio */
 		ProxyHelper.registerService(SensorService.class, vertx, new SensorServiceImpl.Builder().create(vertx, config()), SensorService.SERVICE_ADDRESS);
-
+		
 		/* Create the proxy interface to HelloWorldService. */
 		SENSOR_SERVICE = ProxyHelper.createProxy(SensorService.class, vertx, SensorService.SERVICE_ADDRESS);
 		
@@ -42,8 +42,12 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 		
 		DeploymentOptions deploymentOptions = new DeploymentOptions();
 		deploymentOptions.setConfig(config());
-		/** Importante observar las trazas y ver la asignación que se nos ha realizado del Event Loop */
-		//deploymentOptions.setInstances(Runtime.getRuntime().availableProcessors() * 2);
+		/* Podemos probar si lo asignamos como worker ... que pasaría ? */
+		//deploymentOptions.setWorker(true);
+		//deploymentOptions.setInstances(1);
+		/** Importante observar las trazas y ver la asignación que se nos ha realizado del Event Loop = siempre el mismo hilo */
+		deploymentOptions.setInstances(Runtime.getRuntime().availableProcessors() * 2);
+		
 		/* Desplegamos nuestro verticle con los datos adecuados */
 		vertx.deployVerticle(Example3HttpServerVerticle.class.getName(), deploymentOptions, ar -> {
 			if (ar.succeeded()) {
