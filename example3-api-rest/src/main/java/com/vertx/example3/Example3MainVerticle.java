@@ -1,8 +1,6 @@
 package com.vertx.example3;
 
 import com.vertx.example3.service.sensor.SensorService;
-import com.vertx.example3.service.sensor.SensorServiceVertxEBProxy;
-import com.vertx.example3.service.sensor.SensorServiceVertxProxyHandler;
 import com.vertx.example3.service.sensor.impl.SensorServiceImpl;
 
 import io.vertx.blueprint.microservice.common.BaseMicroserviceVerticle;

@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.vertx.example3.service.sensor.SensorService;
 import com.vertx.example3.service.sensor.domain.SensorDTO;
-import com.vertx.example3.service.sensor.impl.SensorServiceImpl;
 
 import io.vertx.blueprint.microservice.common.RestAPIVerticle;
 import io.vertx.core.Future;

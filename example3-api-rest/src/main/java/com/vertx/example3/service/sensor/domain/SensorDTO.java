@@ -1,7 +1,5 @@
 package com.vertx.example3.service.sensor.domain;
 
-import java.util.UUID;
-
 import io.vertx.codegen.annotations.DataObject;
 import io.vertx.core.json.JsonObject;
 
