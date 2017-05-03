@@ -3,11 +3,10 @@
 La finalidad será crear:
 
 - Construcción real de API RESTful (RestApiVerticle)
-- Anotaciones de Vertx para Verticles
-- Comunicación Handler + Verticle, Verticle + Verticle 
+- Comunicación Handler + Verticle
 - Bloqueo de código y alternativas
 - Verticle síncrono, Workers y Pool del mismo
-- Ejemplo de Async coordination
+- Comportamientos de workers y verticles
 - Monitorización y rendimiento
 
 # En eclipse Ejecutar el Verticle que se quiera del siguiente modo:
