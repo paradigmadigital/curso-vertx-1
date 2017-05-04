@@ -1,6 +1,6 @@
 package com.vertx.example3.service.sensor;
 
-import com.vertx.example3.service.sensor.domain.SensorDTO;
+import com.vertx.example3.service.sensor.dto.SensorDTO;
 
 import io.vertx.codegen.annotations.ProxyGen;
 import io.vertx.codegen.annotations.VertxGen;

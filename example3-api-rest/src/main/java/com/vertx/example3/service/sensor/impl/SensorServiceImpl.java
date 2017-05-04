@@ -6,7 +6,7 @@ import java.util.Date;
 import org.bson.types.ObjectId;
 
 import com.vertx.example3.service.sensor.SensorService;
-import com.vertx.example3.service.sensor.domain.SensorDTO;
+import com.vertx.example3.service.sensor.dto.SensorDTO;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;

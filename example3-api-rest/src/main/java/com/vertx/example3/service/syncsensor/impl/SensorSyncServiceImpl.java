@@ -1,7 +1,7 @@
 package com.vertx.example3.service.syncsensor.impl;
 
 import com.vertx.example3.service.sensor.SensorService;
-import com.vertx.example3.service.sensor.domain.SensorDTO;
+import com.vertx.example3.service.sensor.dto.SensorDTO;
 import com.vertx.example3.service.sensor.impl.SensorServiceImpl;
 
 import io.vertx.core.AsyncResult;

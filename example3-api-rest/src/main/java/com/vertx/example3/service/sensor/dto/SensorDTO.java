@@ -1,4 +1,6 @@
-package com.vertx.example3.service.sensor.domain;
+package com.vertx.example3.service.sensor.dto;
+
+import com.vertx.example3.service.sensor.domain.SensorDTOConverter;
 
 import io.vertx.codegen.annotations.DataObject;
 import io.vertx.core.json.JsonObject;

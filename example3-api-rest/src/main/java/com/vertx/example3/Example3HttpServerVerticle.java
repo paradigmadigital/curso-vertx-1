@@ -3,7 +3,7 @@ package com.vertx.example3;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vertx.example3.service.sensor.SensorService;
-import com.vertx.example3.service.sensor.domain.SensorDTO;
+import com.vertx.example3.service.sensor.dto.SensorDTO;
 import com.vertx.example3.service.syncsensor.verticle.SensorWorkerGetVerticle;
 
 import io.vertx.blueprint.microservice.common.RestAPIVerticle;
@@ -33,7 +33,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 	/** Declaración de los mappings */
 	private static final String API_SAVE = String.format("/%s", API_PATH);
 	private static final String API_RETRIEVE = String.format("/%s/:id", API_PATH);
-	private static final String API_CLOSE = String.format("/%s/:id", API_PATH);
+	private static final String API_DELETE = String.format("/%s/:id", API_PATH);
 
 	/** ejemplo de worker síncrono */
 	private static final String API_SYNC_RETRIEVE = String.format("/%s/sync/:id", API_PATH);
@@ -60,7 +60,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 		router.post(API_SAVE).handler(this::apiSave);
 		router.get(API_RETRIEVE).handler(this::apiGet);
 		router.get(API_SYNC_RETRIEVE).handler(this::apiSyncGet);
-		router.delete(API_CLOSE).handler(this::apiDelete);
+		router.delete(API_DELETE).handler(this::apiDelete);
 
 		/* Típico ¿Estas vivo? :p */
 		enableHeartbeatCheck(router, config());

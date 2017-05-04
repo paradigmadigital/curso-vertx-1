@@ -3,8 +3,8 @@ package com.vertx.example3.service.syncsensor.verticle;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vertx.example3.service.sensor.SensorService;
-import com.vertx.example3.service.sensor.domain.SensorDTO;
 import com.vertx.example3.service.sensor.domain.SensorDTOConverter;
+import com.vertx.example3.service.sensor.dto.SensorDTO;
 import com.vertx.example3.service.syncsensor.impl.SensorSyncServiceImpl;
 
 import io.vertx.core.AbstractVerticle;

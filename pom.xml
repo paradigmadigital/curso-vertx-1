@@ -163,6 +163,7 @@
 		</resources>
 
 		<plugins>
+			<!-- Generación de código de Vertx -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -176,7 +177,7 @@
 							<annotationProcessors>
 								<annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
 							</annotationProcessors>
-							<generatedSourcesDirectory>src/main/generated</generatedSourcesDirectory>
+							<generatedSourcesDirectory>target/main/generated</generatedSourcesDirectory>
 							<compilerArgs>
 								<arg>-Acodegen.output=${project.basedir}/src/main</arg>
 							</compilerArgs>
@@ -188,7 +189,7 @@
 							<annotationProcessors>
 								<annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
 							</annotationProcessors>
-							<generatedTestSourcesDirectory>src/test/generated</generatedTestSourcesDirectory>
+							<generatedTestSourcesDirectory>target/test/generated</generatedTestSourcesDirectory>
 							<compilerArgs>
 								<arg>-Acodegen.output=${project.basedir}/src/test</arg>
 							</compilerArgs>
