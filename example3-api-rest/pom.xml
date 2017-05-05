@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>io.vertx.blueprint</groupId>
 			<artifactId>microservice-lib-common</artifactId>
-			<version>${project.version}</version>
+			<version>3.4.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -28,6 +28,7 @@
 			<artifactId>vertx-mongo-client</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 	</dependencies>
 
 	<build>
