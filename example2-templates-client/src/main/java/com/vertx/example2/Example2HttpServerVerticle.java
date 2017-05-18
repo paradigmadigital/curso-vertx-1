@@ -3,9 +3,6 @@ package com.vertx.example2;
 import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
@@ -40,8 +37,8 @@ public class Example2HttpServerVerticle extends AbstractVerticle {
 		String host = config().getString("vertx.host", "0.0.0.0");
 		int port = config().getInteger("vertx.port", 7777);
 
-		//router.route("/*").handler(LoggerHandler.create());
-		
+		// router.route("/*").handler(LoggerHandler.create());
+
 		/* Handler para el contenido estático */
 		StaticHandler staticHandler = StaticHandler.create();
 		router.route("/static/*").handler(staticHandler);
@@ -62,9 +59,9 @@ public class Example2HttpServerVerticle extends AbstractVerticle {
 		});
 
 		/* Acceso a los datos de modo bidireccional con un servidor de sockets */
-		
-		router.route("/eventbus/*")
-				.handler(SockJSHandler.create(vertx).bridge(new BridgeOptions().addOutboundPermitted(new PermittedOptions().setAddress(ADDRESS_GOKU_HAPPY_LEVEL))));
+
+		router.route("/eventbus/*").handler(
+				SockJSHandler.create(vertx).bridge(new BridgeOptions().addOutboundPermitted(new PermittedOptions().setAddress(ADDRESS_GOKU_HAPPY_LEVEL))));
 
 		/** Periódicamente dejamos la información de la cpu en el bus */
 		OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
@@ -72,9 +69,6 @@ public class Example2HttpServerVerticle extends AbstractVerticle {
 			/* Publicamos los valores */
 			vertx.eventBus().send(ADDRESS_GOKU_HAPPY_LEVEL, new JsonObject().put("value", operatingSystemMXBean.getSystemLoadAverage()));
 		});
-		
-		
-		
 
 		// creamos el HTTP server
 		vertx.createHttpServer().requestHandler(router::accept).listen(port, host, ar -> {

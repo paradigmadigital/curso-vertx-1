@@ -98,6 +98,7 @@ public class Example1HttpServerVerticle extends AbstractVerticle {
 			
 			/* Ponemos el valor */
 			map.put(COUNTER_PARAM_NAME, String.valueOf(counter));
+			LOGGER.debug("Valor del counter " + counter);
 			
 			/* Payload de respuesta */
 			String payload = new JsonObject().put(COUNTER_PARAM_NAME, counter).encode();
