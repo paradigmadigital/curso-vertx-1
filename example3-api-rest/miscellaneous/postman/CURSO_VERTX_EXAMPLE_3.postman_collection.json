@@ -1,0 +1,91 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CURSO_VERTX_EXAMPLE_3",
+		"_postman_id": "11b7a96e-0a02-aee7-93c8-a9e5c2eba5fa",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create sensor measure",
+			"request": {
+				"url": "http://{{host}}:{{port}}/sensors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"type\": \"TEMPERATURE\",\n\t\"description\": \"medida de temperatura ambiental\",\n\t\"measure\": 22.5\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get sensor",
+			"request": {
+				"url": "http://{{host}}:{{port}}/sensors/591ee2d321b9c0112bf73573",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"type\": \"TEMPERATURE\",\n\t\"description\": \"medida de temperatura ambiental\",\n\t\"measure\": 22.5\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete sensor",
+			"request": {
+				"url": "http://{{host}}:{{port}}/sensors/591edefd21b9c01112718e0a",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"type\": \"TEMPERATURE\",\n\t\"description\": \"medida de temperatura ambiental\",\n\t\"measure\": 22.5\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get sensor sync",
+			"request": {
+				"url": "http://{{host}}:{{port}}/sensors/sync/591ee2d321b9c0112bf73573",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"type\": \"TEMPERATURE\",\n\t\"description\": \"medida de temperatura ambiental\",\n\t\"measure\": 22.5\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,56 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CURSO_VERTX_EXAMPLE_2",
+		"_postman_id": "be98f02e-bb4f-afcc-7860-099e69456a1e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contenido estático",
+			"request": {
+				"url": "http://{{host}}:{{port}}/static",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "version",
+						"value": "1",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Contenido dinámico",
+			"request": {
+				"url": "http://{{host}}:{{port}}/dynamic/index",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

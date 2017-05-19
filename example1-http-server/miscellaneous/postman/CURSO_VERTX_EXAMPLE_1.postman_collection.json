@@ -1,0 +1,76 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CURSO_VERTX_EXAMPLE_1",
+		"_postman_id": "a849e8fc-c10f-3162-301f-a2380e0902e9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CURSO_VERTX",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "ping",
+			"request": {
+				"url": "http://{{host}}:{{port}}/ping",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "test_1",
+			"request": {
+				"url": "http://{{host}}:{{port}}/test/test1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add_counter",
+			"request": {
+				"url": "http://{{host}}:{{port}}/add/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n}  "
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
