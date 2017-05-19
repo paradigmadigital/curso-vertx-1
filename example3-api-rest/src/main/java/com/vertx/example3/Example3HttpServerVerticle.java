@@ -3,6 +3,7 @@ package com.vertx.example3;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vertx.example3.service.sensor.SensorService;
+import com.vertx.example3.service.sensor.SensorServiceProvider;
 import com.vertx.example3.service.sensor.dto.SensorDTO;
 import com.vertx.example3.service.syncsensor.verticle.SensorWorkerGetVerticle;
 
@@ -14,7 +15,6 @@ import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
-import io.vertx.serviceproxy.ProxyHelper;
 
 /**
  * Verticle con un API REST sencillo de sensores y de
@@ -132,8 +132,8 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 	 */
 	private SensorService getSensorService() {
 		/* Create the proxy interface to HelloWorldService. */
-		SensorService sensorService = ProxyHelper.createProxy(SensorService.class, vertx, SensorService.SERVICE_ADDRESS);
-		//SensorService sensorService = SensorServiceProvider.getInstance().getSensorService();
+		//SensorService sensorService = ProxyHelper.createProxy(SensorService.class, vertx, SensorService.SERVICE_ADDRESS);
+		SensorService sensorService = SensorServiceProvider.getInstance().getSensorService();
 		return sensorService;
 	}
 

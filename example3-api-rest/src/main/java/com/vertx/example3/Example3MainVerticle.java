@@ -33,7 +33,7 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 		DeploymentOptions deploymentOptions = new DeploymentOptions();
 		deploymentOptions.setConfig(config());
 
-		/** Importante observar las trazas y ver la asignación que se nos ha realizado del Event Loop = siempre el mismo hilo */
+		/** Importante observar las trazas y ver la asignación que se nos ha realizado del Event Loop = siempre el mismo nº  */
 		deploymentOptions.setInstances(1);
 		// deploymentOptions.setInstances(Runtime.getRuntime().availableProcessors() * 2);
 
