@@ -12,6 +12,10 @@ La finalidad será crear:
  - Añadir la variable de entorno de java  -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory -Dhazelcast.logging.type=slf4j
  - Añadir la variable de entorno de java para el debug de -Dvertx.options.blockedThreadCheckInterval=1000000 
 
+
+![Configuración local](image/config1.png)
+![Configuración local](image/config2.png)
+
 # Build and run 
 
 Ejecutar build_and_run.sh
