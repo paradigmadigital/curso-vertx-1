@@ -7,16 +7,14 @@ import com.vertx.example3.service.sensor.dto.SensorDTO;
 import com.vertx.example3.service.syncsensor.verticle.SensorWorkerGetVerticle;
 
 import io.vertx.blueprint.microservice.common.RestAPIVerticle;
-import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
-import io.vertx.core.Handler;
-import io.vertx.core.eventbus.Message;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
+import io.vertx.serviceproxy.ProxyHelper;
 
 /**
  * Verticle con un API REST sencillo de sensores y de
@@ -38,8 +36,6 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 	/** ejemplo de worker síncrono */
 	private static final String API_SYNC_RETRIEVE = String.format("/%s/sync/:id", API_PATH);
 
-	private SensorService service;
-
 	public Example3HttpServerVerticle() {
 	}
 
@@ -47,7 +43,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 	public void start(Future<Void> future) throws Exception {
 
 		super.start();
-		service = Example3MainVerticle.SENSOR_SERVICE;
+
 		Router router = Router.router(vertx);
 
 		/* Habilitamos el CORS */
@@ -85,7 +81,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 		if (StringUtils.isBlank(sensorDTO.getDescription()) || StringUtils.isBlank(sensorDTO.getType())) {
 			badRequest(context, new IllegalStateException("Sensor bad request"));
 		} else {
-			service.saveSensor(sensorDTO, ar -> {
+			getSensorService().saveSensor(sensorDTO, ar -> {
 				if (ar.succeeded()) {
 					SensorDTO newSensorDTO = ar.result();
 					JsonObject result = new JsonObject().put("message", String.format("sensor %s saved", newSensorDTO.getId()));
@@ -100,13 +96,13 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 	private void apiGet(RoutingContext context) {
 		/* Obtenemos el parámetro de la url */
 		String id = context.request().getParam("id");
-		service.getSensor(id, resultHandlerNonEmpty(context));
+		getSensorService().getSensor(id, resultHandlerNonEmpty(context));
 	}
 
 	private void apiDelete(RoutingContext context) {
 		/* Obtenemos el parámetro de la url */
 		String id = context.request().getParam("id");
-		service.removeSensor(id, deleteResultHandler(context));
+		getSensorService().removeSensor(id, deleteResultHandler(context));
 	}
 
 	/**
@@ -119,9 +115,26 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 		String id = context.request().getParam("id");
 
 		vertx.eventBus().send(SensorWorkerGetVerticle.VERTICLE_ADDRESS, new JsonObject().put("id", id), handler -> {
-			context.response().putHeader("content-type", CONTENT_TYPE_JSON).end(handler.result().body().toString());
-			
+			if (handler.succeeded()) {
+				resultBody(context, (JsonObject) handler.result().body(), 200);
+			} else {
+				notFound(context);
+			}
+
 		});
+	}
+
+	/**
+	 * Método para mostrar el comportamiento de cuando una operación viaja por el bus o no lo hace. hay modos más elegantes pero hemos creido que este era muy
+	 * ilustrativo.
+	 * 
+	 * @return
+	 */
+	private SensorService getSensorService() {
+		/* Create the proxy interface to HelloWorldService. */
+		SensorService sensorService = ProxyHelper.createProxy(SensorService.class, vertx, SensorService.SERVICE_ADDRESS);
+		//SensorService sensorService = SensorServiceProvider.getInstance().getSensorService();
+		return sensorService;
 	}
 
 }

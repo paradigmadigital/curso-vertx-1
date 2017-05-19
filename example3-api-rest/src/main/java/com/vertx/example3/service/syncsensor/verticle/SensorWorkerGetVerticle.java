@@ -3,8 +3,9 @@ package com.vertx.example3.service.syncsensor.verticle;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vertx.example3.service.sensor.SensorService;
+import com.vertx.example3.service.sensor.SensorServiceProvider;
+import com.vertx.example3.service.sensor.dto.SensorDTO;
 import com.vertx.example3.service.sensor.dto.SensorDTOConverter;
-import com.vertx.example3.service.syncsensor.impl.SensorSyncServiceImpl;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Handler;
@@ -27,18 +28,17 @@ public class SensorWorkerGetVerticle extends AbstractVerticle implements Handler
 	/** Dirección del verticle dentro del Bus */
 	public static final String VERTICLE_ADDRESS = "verticle.worker.get.sensor";
 
-	/* Referencia al servicio (candidato a singleton) */
-	private SensorService service;
-
 	@Override
 	public void start() throws Exception {
 		vertx.eventBus().consumer(VERTICLE_ADDRESS, this);
-		service = new SensorSyncServiceImpl.Builder().create(vertx, config());
+		
 		LOGGER.info(String.format("Service  %s started.", VERTICLE_ADDRESS));
 	}
 
 	@Override
 	public void handle(Message<JsonObject> event) {
+		/* Referencia al servicio (ojo si estamos usando la comunicación por el bus o bien sin él) */	
+		SensorService service = SensorServiceProvider.getInstance().getSensorService();
 		
 		JsonObject body = event.body();
 		/* Obtenemos el id */
@@ -52,10 +52,11 @@ public class SensorWorkerGetVerticle extends AbstractVerticle implements Handler
 			resultObject.put("error", " required id");
 		} else {
 			service.getSensor(id, handler -> {
-				if (handler.succeeded()) {
-					SensorDTOConverter.toJson(handler.result(), resultObject);
+				SensorDTO result = handler.result();
+				if (handler.succeeded() && result != null) {
+					SensorDTOConverter.toJson(result, resultObject);
 				} else {
-					resultObject.put("error", handler.cause().getMessage());
+					resultObject.put("error", "Not Found element");
 				}
 				event.reply(resultObject);
 

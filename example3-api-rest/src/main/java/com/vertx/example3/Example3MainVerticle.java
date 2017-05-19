@@ -1,13 +1,14 @@
 package com.vertx.example3;
 
 import com.vertx.example3.service.sensor.SensorService;
-import com.vertx.example3.service.sensor.impl.SensorServiceImpl;
+import com.vertx.example3.service.sensor.SensorServiceProvider;
 import com.vertx.example3.service.syncsensor.verticle.SensorWorkerGetVerticle;
 
 import io.vertx.blueprint.microservice.common.BaseMicroserviceVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
+import io.vertx.serviceproxy.ProxyHelper;
 
 /**
  * Verticle que arrancará el resto de los de la aplicación
@@ -19,32 +20,22 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Example3MainVerticle.class);
 
-	/** Instancia del servicio unica para facilitar (al ser un elemento con persistencia cada vez que creamos uno creamos un cliente de conexión) */
-	public static SensorService SENSOR_SERVICE = null;
-
 	@Override
 	public void start() throws Exception {
 		super.start();
-		/**
-		 * En este caso no sincronizamos nada ya que será un único hilo el que lo arranque, pero habría que preveer está situación, en este punto podríamos usar
-		 * cualquier inyector de dependencias
-		 */
-		SENSOR_SERVICE = new SensorServiceImpl.Builder().create(vertx, config());
+		/* Creamos una única instancia de nuestro servicio de sensores */
+		SensorServiceProvider sensorServiceProvider = SensorServiceProvider.getInstance();
+		sensorServiceProvider.init(vertx, config());
 
-		// /* INICIO DESCOMENTAR PARA HACER USO DEL BUS EN LAS OPERACIONES CON LA GENERACIÓN DE VERT.X MEDIANTE PROXY */
-		// /* Registramos el servicio */
-		// ProxyHelper.registerService(SensorService.class, vertx, new SensorServiceImpl.Builder().create(vertx, config()), SensorService.SERVICE_ADDRESS);
-		//
-		// /* Create the proxy interface to HelloWorldService. */
-		// SENSOR_SERVICE = ProxyHelper.createProxy(SensorService.class, vertx, SensorService.SERVICE_ADDRESS);
-
-		/* FIN DESCOMENTAR PARA HACER USO DEL BUS EN LAS OPERACIONES CON LA GENERACIÓN DE VERT.X MEDIANTE UN PROXY */
+		/* Registramos el servicio (Para el ejemplo del uso del bus ) */
+		ProxyHelper.registerService(SensorService.class, vertx, sensorServiceProvider.getSensorService(), SensorService.SERVICE_ADDRESS);
 
 		DeploymentOptions deploymentOptions = new DeploymentOptions();
 		deploymentOptions.setConfig(config());
-		deploymentOptions.setInstances(1);
+
 		/** Importante observar las trazas y ver la asignación que se nos ha realizado del Event Loop = siempre el mismo hilo */
-		//deploymentOptions.setInstances(Runtime.getRuntime().availableProcessors() * 2);
+		deploymentOptions.setInstances(1);
+		// deploymentOptions.setInstances(Runtime.getRuntime().availableProcessors() * 2);
 
 		/* Desplegamos nuestro verticle http server con los datos adecuados */
 		vertx.deployVerticle(Example3HttpServerVerticle.class.getName(), deploymentOptions, ar -> {
@@ -55,12 +46,12 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 			}
 		});
 
-		/* Ejemplo de verticle worker */
-		//deploySyncWorker();
+		/* Ejemplo de verticle worker (esto se debería de componer en el arranque global de la aplicación controlando el resultado del despliegue) */
+		deploySyncWorker();
 	}
 
 	/**
-	 * Despliegue de otro verticle de tipo worker con operación síncrona  
+	 * Despliegue de otro verticle de tipo worker con operación síncrona
 	 * 
 	 */
 	private void deploySyncWorker() {
@@ -69,7 +60,7 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 		deploymentOptions.setConfig(config());
 		/* Podemos probar si lo asignamos como no worker ... que pasaría ? */
 		deploymentOptions.setWorker(true);
-		deploymentOptions.setInstances(200);
+		deploymentOptions.setInstances(5);
 
 		/* Desplegamos nuestro verticle http server con los datos adecuados */
 		vertx.deployVerticle(SensorWorkerGetVerticle.class.getName(), deploymentOptions, ar -> {

@@ -27,18 +27,6 @@ public class SensorServiceImpl implements SensorService {
 	private final MongoClient client;
 	protected final Vertx vertx;
 
-	/**
-	 * Builder para la creación de una instancia genérica del servicio
-	 *
-	 * @author manuel
-	 *
-	 */
-	public static class Builder {
-		public SensorService create(Vertx vertx, JsonObject config) {
-			return new SensorServiceImpl(vertx, config);
-		}
-	}
-
 	public SensorServiceImpl(Vertx vertx, JsonObject config) {
 		/* Configuración de la conexión http://vertx.io/docs/vertx-mongo-client/java/#_configuring_the_client */
 		JsonObject jsonObject = config.getJsonObject("mongo");
