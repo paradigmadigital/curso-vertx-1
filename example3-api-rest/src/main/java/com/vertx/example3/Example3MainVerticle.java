@@ -34,8 +34,8 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 		deploymentOptions.setConfig(config());
 
 		/** Importante observar las trazas y ver la asignación que se nos ha realizado del Event Loop = siempre el mismo nº  */
-		deploymentOptions.setInstances(1);
-		// deploymentOptions.setInstances(Runtime.getRuntime().availableProcessors() * 2);
+		//deploymentOptions.setInstances(1);
+		deploymentOptions.setInstances(Runtime.getRuntime().availableProcessors() * 2);
 
 		/* Desplegamos nuestro verticle http server con los datos adecuados */
 		vertx.deployVerticle(Example3HttpServerVerticle.class.getName(), deploymentOptions, ar -> {
