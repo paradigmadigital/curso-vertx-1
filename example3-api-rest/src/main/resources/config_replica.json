@@ -3,16 +3,7 @@
 	"vertx.port": 7777,
 	"heartbeat.path": "/ping",
 	"mongo": {
-		"db_name": "sensors",
-		"hosts" : [
-			{
-      		"host" : "192.168.32.70", 
-      		"port" : 27017       
-    		},
-    		{
-      		"host" : "192.168.32.123", 
-      		"port" : 27017       
-    		}
-  		]
+		"connection_string": "mongodb://192.168.32.70,192.168.32.123/?waitQueueMultiple=10000000",
+		"db_name": "sensors"
 	}
 }
