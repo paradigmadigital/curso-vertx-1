@@ -36,7 +36,7 @@ public class SensorServiceImpl implements SensorService {
 
 	@Override
 	public void saveSensor(SensorDTO sensor, Handler<AsyncResult<SensorDTO>> resultHandler) {
-
+		
 		sensor.setId(new ObjectId().toString());
 		client.save(COLLECTION, new JsonObject().put("_id", sensor.getId()).put("name", sensor.getType()).put("description", sensor.getDescription())
 				.put("measure", sensor.getMeasure()).put("createdAt", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date())), ar -> {
@@ -51,6 +51,7 @@ public class SensorServiceImpl implements SensorService {
 
 	@Override
 	public void getSensor(String id, Handler<AsyncResult<SensorDTO>> resultHandler) {
+		LOGGER.info(String.format(" get sensor data ", id));
 		JsonObject query = new JsonObject().put("_id", id);
 		client.findOne(COLLECTION, query, null, ar -> {
 			if (ar.succeeded()) {
@@ -68,6 +69,7 @@ public class SensorServiceImpl implements SensorService {
 
 	@Override
 	public void removeSensor(String id, Handler<AsyncResult<Void>> resultHandler) {
+		LOGGER.info(String.format(" remove sensor data ", id));
 		JsonObject query = new JsonObject().put("_id", id);
 		client.removeDocument(COLLECTION, query, ar -> {
 			if (ar.succeeded()) {
