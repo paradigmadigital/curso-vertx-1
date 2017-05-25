@@ -55,7 +55,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 		/* Rutas */
 		router.post(API_SAVE).handler(this::apiSave);
 		router.get(API_RETRIEVE).handler(this::apiGet);
-		router.get(API_SYNC_RETRIEVE).handler(this::apiSyncGet);
+		//router.get(API_SYNC_RETRIEVE).handler(this::apiSyncGet);
 		router.delete(API_DELETE).handler(this::apiDelete);
 
 		/* Típico ¿Estas vivo? :p */

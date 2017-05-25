@@ -6,6 +6,7 @@ import com.vertx.example3.service.sensor.SensorService;
 import com.vertx.example3.service.sensor.SensorServiceProvider;
 import com.vertx.example3.service.sensor.dto.SensorDTO;
 import com.vertx.example3.service.sensor.dto.SensorDTOConverter;
+import com.vertx.example3.service.syncsensor.impl.SensorSyncServiceImpl;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Handler;
@@ -38,7 +39,7 @@ public class SensorWorkerGetVerticle extends AbstractVerticle implements Handler
 	@Override
 	public void handle(Message<JsonObject> event) {
 		/* Referencia al servicio (ojo si estamos usando la comunicación por el bus o bien sin él) */	
-		SensorService service = SensorServiceProvider.getInstance().getSensorService();
+		SensorService service = new SensorSyncServiceImpl(vertx, config());
 		
 		JsonObject body = event.body();
 		/* Obtenemos el id */
