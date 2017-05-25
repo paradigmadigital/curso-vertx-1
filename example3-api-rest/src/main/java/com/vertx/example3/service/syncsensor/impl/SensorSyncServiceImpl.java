@@ -38,8 +38,8 @@ public class SensorSyncServiceImpl extends SensorServiceImpl {
 	@Override
 	public void getSensor(String id, Handler<AsyncResult<SensorDTO>> resultHandler) {
 
-		/* Paramos 2 segundos simulando sincronía y realizamos la operación */
-		vertx.setTimer(2000, h -> {
+		/* Paramos X simulando sincronía y realizamos la operación */
+		vertx.setTimer(200, h -> {
 			/* Invocamos al método del padre */
 			SensorSyncServiceImpl.super.getSensor(id, resultHandler);
 		});
