@@ -55,7 +55,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 		/* Rutas */
 		router.post(API_SAVE).handler(this::apiSave);
 		router.get(API_RETRIEVE).handler(this::apiGet);
-		//router.get(API_SYNC_RETRIEVE).handler(this::apiSyncGet);
+		router.get(API_SYNC_RETRIEVE).handler(this::apiSyncGet);
 		router.delete(API_DELETE).handler(this::apiDelete);
 
 		/* Típico ¿Estas vivo? :p */
@@ -75,7 +75,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 	private void apiSave(RoutingContext context) {
 		/* Parseamos a nuesto objeto de entrada */
 		SensorDTO sensorDTO = new SensorDTO(new JsonObject(context.getBodyAsString()));
-		LOGGER.info(" apiSave with values  " + sensorDTO.toString());
+		LOGGER.info("apiSave with values  " + sensorDTO.toString());
 
 		/* Estas comprobaciones serían muy mejorables con la jsr303 */
 		if (StringUtils.isBlank(sensorDTO.getDescription()) || StringUtils.isBlank(sensorDTO.getType())) {
