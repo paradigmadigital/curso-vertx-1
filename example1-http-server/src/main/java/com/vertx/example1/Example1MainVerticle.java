@@ -27,7 +27,9 @@ public class Example1MainVerticle extends AbstractVerticle {
 		/* Asignamos como instancias el numero de procesadores por 2 (Patrón multireactor) 
 		 * http://vertx.io/docs/vertx-core/java/#_specifying_number_of_verticle_instances */
 		options.setConfig(config());	
-		options.setInstances(Runtime.getRuntime().availableProcessors() * 2);
+		//options.setInstances(Runtime.getRuntime().availableProcessors() * 2);
+		//options.setInstances(1);
+		
 		vertx.deployVerticle(verticleName, options, ar -> {
 			if (ar.succeeded()) {
 				LOGGER.info(String.format("Deployment verticle %s ok ", verticleName));
