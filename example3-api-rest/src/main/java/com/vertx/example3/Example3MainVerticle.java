@@ -58,7 +58,7 @@ public class Example3MainVerticle extends BaseMicroserviceVerticle {
 		vertx.deployVerticle(Example3HttpServerVerticle.class.getName(), deploymentOptions, ar -> {
 			if (ar.succeeded()) {
 				LOGGER.info(String.format("Deployment verticle  ok Example3HttpServerVerticle "));
-				future.succeeded();
+				future.complete();
 			} else {
 				LOGGER.info(String.format("Deployment verticle ko Example3HttpServerVerticle " + ar.cause()));
 				future.fail(ar.cause());
