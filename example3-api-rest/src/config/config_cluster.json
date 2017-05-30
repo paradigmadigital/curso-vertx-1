@@ -3,7 +3,7 @@
 	"vertx.port": 8888,
 	"heartbeat.path": "/ping",
 	"mongo": {
-		"connection_string": "mongodb://localhost/?waitQueueMultiple=10000000",
+		"connection_string": "mongodb://192.168.32.70,192.168.32.123/?waitQueueMultiple=10000000",
 		"db_name": "sensors"
 	}
 }
