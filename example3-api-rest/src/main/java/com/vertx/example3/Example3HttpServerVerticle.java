@@ -41,7 +41,7 @@ public class Example3HttpServerVerticle extends RestAPIVerticle {
 
 	@Override
 	public void start(Future<Void> future) throws Exception {
-
+		
 		super.start();
 
 		Router router = Router.router(vertx);
