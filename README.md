@@ -18,9 +18,9 @@ Librería perteneciente al [ejemplo de microservicios en Vert.x](https://github.
 #### Ejemplos
 --------
 
-- [Ejemplo 1](./tree/master/example1-http-server): Aprendizaje básico de creación de un servidor http.
-- Ejemplo 2: Uso de Módulo web + plantillas + socket server
-- Ejemplo 3: Creación de un REST-API
+- [Ejemplo 1](https://github.com/paradigmadigital/curso-vertx-1/tree/master/example1-http-server): Aprendizaje básico de creación de un servidor http.
+- [Ejemplo 2](https://github.com/paradigmadigital/curso-vertx-1/tree/master/example2-templates-client): Uso de Módulo web + plantillas + socket server
+- [Ejemplo 3](https://github.com/paradigmadigital/curso-vertx-1/tree/master/example3-api-rest): Creación de un REST-API
 
   
 ####  Requisitos básicos
