@@ -11,6 +11,14 @@ Siguiendo el [video de los ejemplos](https://www.youtube.com/watch?v=pVsmdwgaUWE
 - Medición de rendimiento (Jmeter)
 
 
+#### **Publicación**
+--------
+Se publicarán varios endpoints:
+
+- /static
+- /dynamic/index
+
+
 #### **Ejecución**
 --------
 

@@ -17,6 +17,15 @@ Siguiendo el [video de los ejemplos](https://www.youtube.com/watch?v=pVsmdwgaUWE
 - Medición de rendimiento (Jmeter)
 
 
+#### **Publicación**
+--------
+Se publicarán varios endpoints:
+
+- /test
+- /test/test1
+- /ping
+- /add/:counter 
+
 #### **Ejecución**
 --------
 

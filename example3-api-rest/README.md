@@ -13,11 +13,22 @@ Siguiendo el [video de los ejemplos](https://www.youtube.com/watch?v=pVsmdwgaUWE
 - Comportamientos de workers y verticles
 - Monitorización y rendimiento
 
+
+
+#### **Publicación**
+--------
+Se publicará el API sensors con los verbos de sus operaciones:
+
+- /sensors
+
+
+
 #### **Ejecución**
 --------
 > **Nota:**
 
-> - No olvides construir la librería [microservice common](https://github.com/paradigmadigital/curso-vertx-libs) si no lo has hecho ya. 
+> - No olvides construir la librería [microservice common](https://github.com/paradigmadigital/curso-vertx-libs) si no lo has hecho ya.
+> - No olvides arrancar un MongoDB en local y configurar el fichero config.json 
 
 
 >**Mediante script**
