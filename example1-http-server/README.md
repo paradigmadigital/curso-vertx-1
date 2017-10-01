@@ -1,21 +1,39 @@
-# Primer ejemplo de servidor http simple 
-
-La finalidad será crear:
-
-- Servidor http
-- Servidor http + pequeño API REST
-
-# En eclipse Ejecutar el Verticle que se quiera del siguiente modo:
-
- - Seleccionar la clase Starter
- - Añadir el comando run PAQUETERIA_Y_NOMBRE_DE_VERTICLE -conf ruta_al_fichero_de_configuracion
- - Añadir la variable de entorno de java  -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory -Dhazelcast.logging.type=slf4j
- - Añadir la variable de entorno de java para el debug de -Dvertx.options.blockedThreadCheckInterval=1000000 
+### **Curso Vert.x : Ejemplo 1**
+--------
+Siguiendo el [video de los ejemplos](https://www.youtube.com/watch?v=pVsmdwgaUWE) podrán entender las funcionalidades que se ofrecen en este ejemplo más ampliamente. 
 
 
-![Configuración local](image/config1.png)
-![Configuración local](image/config2.png)
+#### **Objetivos**
+--------
+- Librería common de blueprints
+- Organización común en todos los ejemplos
+- Event Loop
+- Arrancar Vertx Interfaz (Alternativa a un main directo), comando de vert.x + vert.x options
+- Crear un servidor http
+- Crear rutas, comportamiento anidado de las rutas
+- LocalData y SharedData en el Bus
+- Workers - Event Loop -> asignaciones
+- Monitorización mediante JMX (VisualVM, Jconsole)
+- Medición de rendimiento (Jmeter)
 
-# Build and run 
 
-Ejecutar build_and_run.sh
+#### **Ejecución**
+--------
+
+>**Mediante script**
+
+```
+ build_and_run.sh
+```
+
+>**Haciendo uso del IDE**
+
+Para arrancarlo de este modo se deben seguir las instrucciones disponibles en la documentación de la raíz de los ejemplos, siendo el Verticle a ejecutar **com.vertx.example1.Example1MainVerticle**
+
+#### **Equipo de desarrollo** 
+--------
+
+ - J.Manuel García Rozas (Arquitecto) jmgrozas@gmail.com 
+ - Ernesto Valero (Arquitecto de sistemas) evalero@paradigmadigital.com
+ - Teresa Quintano (Front Developer) tquintano@paradigmadigital.com
+

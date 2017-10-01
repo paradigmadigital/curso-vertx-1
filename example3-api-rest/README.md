@@ -1,6 +1,10 @@
-# Tercer ejemplo API REST simple
+### **Curso Vert.x : Ejemplo 3**
+--------
+Siguiendo el [video de los ejemplos](https://www.youtube.com/watch?v=pVsmdwgaUWE) podrán entender las funcionalidades que se ofrecen en este ejemplo más ampliamente. 
 
-La finalidad será crear:
+
+#### **Objetivos**
+--------
 
 - Construcción real de API RESTful (RestApiVerticle)
 - Comunicación Handler + Verticle
@@ -9,13 +13,26 @@ La finalidad será crear:
 - Comportamientos de workers y verticles
 - Monitorización y rendimiento
 
-# En eclipse Ejecutar el Verticle que se quiera del siguiente modo:
+#### **Ejecución**
+--------
+> **Nota:**
 
- - Seleccionar la clase Starter
- - Añadir el comando run PAQUETERIA_Y_NOMBRE_DE_VERTICLE -conf ruta_al_fichero_de_configuracion
- - Añadir la variable de entorno de java  -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory
- - Añadir la variable de entorno de java para el debug de -Dvertx.options.blockedThreadCheckInterval=1000000 
+> - No olvides construir la librería [microservice common](https://github.com/paradigmadigital/curso-vertx-libs) si no lo has hecho ya. 
 
-# Build and run 
 
-Ejecutar build_and_run.sh
+>**Mediante script**
+
+```
+ build_and_run.sh
+```
+
+>**Haciendo uso del IDE**
+
+Para arrancarlo de este modo se deben seguir las instrucciones disponibles en la documentación de la raíz de los ejemplos, siendo el Verticle a ejecutar **com.vertx.example3.Example3MainVerticle**
+
+#### **Equipo de desarrollo** 
+--------
+
+ - J.Manuel García Rozas (Arquitecto) jmgrozas@gmail.com 
+ - Ernesto Valero (Arquitecto de sistemas) evalero@paradigmadigital.com
+ - Teresa Quintano (Front Developer) tquintano@paradigmadigital.com

@@ -1,17 +1,32 @@
-# Primer ejemplo de servidor http más configuraciones de plantillas de cliente
+### **Curso Vert.x : Ejemplo 2**
+--------
+Siguiendo el [video de los ejemplos](https://www.youtube.com/watch?v=pVsmdwgaUWE) podrán entender las funcionalidades que se ofrecen en este ejemplo más ampliamente. 
 
-La finalidad será crear:
 
-- Servidor http + servir estáticos + uso de templates de servidor
+#### **Objetivos**
+--------
+- Servidor http + estáticos + uso de templates de servidor
 - Servidor http + websockes
+- Monitorización mediante JMX (VisualVM, Jconsole)
+- Medición de rendimiento (Jmeter)
 
-# En eclipse Ejecutar el Verticle que se quiera del siguiente modo:
 
- - Seleccionar la clase Starter
- - Añadir el comando run PAQUETERIA_Y_NOMBRE_DE_VERTICLE -conf ruta_al_fichero_de_configuracion
- - Añadir la variable de entorno de java  -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory
- - Añadir la variable de entorno de java para el debug de -Dvertx.options.blockedThreadCheckInterval=1000000 
+#### **Ejecución**
+--------
 
-# Build and run 
+>**Mediante script**
 
-Ejecutar build_and_run.sh
+```
+ build_and_run.sh
+```
+
+>**Haciendo uso del IDE**
+
+Para arrancarlo de este modo se deben seguir las instrucciones disponibles en la documentación de la raíz de los ejemplos, siendo el Verticle a ejecutar **com.vertx.example2.Example2MainVerticle**
+
+#### **Equipo de desarrollo** 
+--------
+
+ - J.Manuel García Rozas (Arquitecto) jmgrozas@gmail.com 
+ - Ernesto Valero (Arquitecto de sistemas) evalero@paradigmadigital.com
+ - Teresa Quintano (Front Developer) tquintano@paradigmadigital.com
