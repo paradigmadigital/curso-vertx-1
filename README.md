@@ -6,9 +6,9 @@
 #### Lib Microservice Common
 --------
 
-Librería perteneciente al [ejemplo de microservicios en Vert.x](https://github.com/paradigmadigital/curso-vertx-libs). La fuente oriiginal de la librería la podéis encontrar [aquí](http://www.sczyh30.com/vertx-blueprint-microservice/index.html#blueprint-common-module).
+Librería perteneciente al [ejemplo de microservicios en Vert.x](https://github.com/paradigmadigital/curso-vertx-libs). La fuente original la podéis encontrar [aquí](http://www.sczyh30.com/vertx-blueprint-microservice/index.html#blueprint-common-module).
 
->Se debe de ejecutar la construcción de esta librería ya que los ejemplos hacen uso de ella.
+>Se debe ejecutar la construcción de esta librería ya que los ejemplos hacen uso de ella.
 
 ```
  mvn clean install 
@@ -18,7 +18,7 @@ Librería perteneciente al [ejemplo de microservicios en Vert.x](https://github.
 #### Ejemplos
 --------
 
-- Ejemplo 1: Aprendizaje básico de creación de un servidor http.
+- [Ejemplo 1](tree/master/example1-http-server): Aprendizaje básico de creación de un servidor http.
 - Ejemplo 2: Uso de Módulo web + plantillas + socket server
 - Ejemplo 3: Creación de un REST-API
 
